@@ -17,6 +17,7 @@ class BufferedTokenizer
     # which is only joined when a token is reached, substantially reducing the
     # number of objects required for the operation.
     @input = []
+    @tail = ''
   end
 
   # Extract takes an arbitrary string of input data and returns an array of
@@ -31,21 +32,25 @@ class BufferedTokenizer
     # input buffer or not (i.e. a literal edge case)  Specifying -1 forces split to
     # return "" in this case, meaning that the last entry in the list represents a
     # new segment of data where the token has not been encountered.
-    entities = data.split @delimiter, -1
+    @tail << data
+    entities = @tail.split @delimiter, -1
 
-    # Move the first entry in the resulting array into the input buffer.  It represents
-    # the last segment of a token-delimited entity unless it's the only entry in the list.
-    @input << entities.shift
+    # The first entry in the resulting array represents the last segment of a
+    # token-delimited entity unless it's the only entry in the list.
+    @tail = entities.shift
 
     # If the resulting array from the split is empty, the token was not encountered
     # (not even at the end of the buffer).  Since we've encountered no token-delimited
     # entities this go-around, return an empty array.
-    return [] if entities.empty?
+    if entities.empty?
+      @input << @tail.slice!(0 .. @tail.size - @delimiter.size)
+      return []
+    end
 
     # At this point, we've hit a token, or potentially multiple tokens.  Now we can bring
     # together all the data we've buffered from earlier calls without hitting a token,
     # and add it to our list of discovered entities.
-    entities.unshift @input.join
+    entities.unshift(@input.join + @tail)
 
     # Now that we've hit a token, joined the input buffer and added it to the entities
     # list, we can go ahead and clear the input buffer.  All of the segments that were
@@ -55,7 +60,8 @@ class BufferedTokenizer
     # The last entity in the list is not token delimited, however, thanks to the -1
     # passed to split.  It represents the beginning of a new list of as-yet-untokenized
     # data, so we add it to the start of the list.
-    @input << entities.pop
+    @tail = entities.pop
+    @input << @tail.slice!(0 .. @tail.size - @delimiter.size)
 
     # Now we're left with the list of extracted token-delimited entities we wanted
     # in the first place.  Hooray!
@@ -65,8 +71,9 @@ class BufferedTokenizer
   # Flush the contents of the input buffer, i.e. return the input buffer even though
   # a token has not yet been encountered
   def flush
-    buffer = @input.join
+    buffer = @input.join + @tail
     @input.clear
+    @tail = ''
     buffer
   end
 end
