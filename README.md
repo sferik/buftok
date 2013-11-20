@@ -1,5 +1,9 @@
 # BufferedTokenizer
 
+[![Build Status](https://travis-ci.org/sferik/buftok.png?branch=master)][travis]
+
+[travis]: https://travis-ci.org/sferik/buftok
+
 ###### Statefully split input data by a specifiable token
 
 BufferedTokenizer takes a delimiter upon instantiation, or acts line-based by
