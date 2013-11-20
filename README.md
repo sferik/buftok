@@ -2,9 +2,11 @@
 
 [![Gem Version](https://badge.fury.io/rb/buftok.png)][gem]
 [![Build Status](https://travis-ci.org/sferik/buftok.png?branch=master)][travis]
+[![Dependency Status](https://gemnasium.com/sferik/buftok.png?travis)][gemnasium]
 
 [gem]: https://rubygems.org/gems/buftok
 [travis]: https://travis-ci.org/sferik/buftok
+[gemnasium]: https://gemnasium.com/sferik/buftok
 
 ###### Statefully split input data by a specifiable token
 
