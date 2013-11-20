@@ -7,7 +7,7 @@ class BufferedTokenizer
   # New BufferedTokenizers will operate on lines delimited by "\n" by default
   # or allow you to specify any delimiter token you so choose, which will then
   # be used by String#split to tokenize the input data.
-  def initialize(delimiter = "\n")
+  def initialize(delimiter = $/)
     # Store the specified delimiter
     @delimiter = delimiter
 
