@@ -5,6 +5,8 @@ Gem::Specification.new do |spec|
   spec.email         = "sferik@gmail.com"
   spec.files         = %w(CONTRIBUTING.md Gemfile LICENSE.md README.md Rakefile buftok.gemspec)
   spec.files        += Dir.glob("lib/**/*.rb")
+  spec.files        += Dir.glob("test/**/*.rb")
+  spec.test_files    = spec.files.grep(%r{^test/})
   spec.homepage      = "https://github.com/sferik/buftok"
   spec.licenses      = ['MIT']
   spec.name          = "buftok"
