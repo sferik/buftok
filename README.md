@@ -1,7 +1,9 @@
 # BufferedTokenizer
 
+[![Gem Version](https://badge.fury.io/rb/buftok.png)][gem]
 [![Build Status](https://travis-ci.org/sferik/buftok.png?branch=master)][travis]
 
+[gem]: https://rubygems.org/gems/buftok
 [travis]: https://travis-ci.org/sferik/buftok
 
 ###### Statefully split input data by a specifiable token
