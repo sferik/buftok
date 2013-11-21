@@ -12,87 +12,48 @@ class BufferedTokenizer
   # appropriate data structure).  Segments of input data are stored in a list
   # which is only joined when a token is reached, substantially reducing the
   # number of objects required for the operation.
-  def self.new(delimiter = $/)
-    if delimiter.length == 1
-      CharTokenizer.new(delimiter)
-    else
-      PatternTokenizer.new(delimiter)
-    end
+  def initialize(delimiter = $/)
+    @delimiter = delimiter
+    @input = []
+    @tail = ''
+    @trim = @delimiter.length - 1
   end
 
-  class CharTokenizer
-    # Use check_size = false to ignore the size limit raise.
-    # This is used by PatternTokenizer which calls super(delimiter, false)
-    def initialize(delimiter = $/, check_size = true)
-      if check_size && delimiter.length > 1
-        raise ArgumentError, "Delimiter length too long: #{delimiter.inspect}. BufferedTokenizer::CharTokenizer misses multi-char delimiters that span input chunks."
-      end
-      @delimiter = delimiter
-      @input = []
+  # Extract takes an arbitrary string of input data and returns an array of
+  # tokenized entities, provided there were any available to extract.  This
+  # makes for easy processing of datagrams using a pattern like:
+  #
+  #   tokenizer.extract(data).map { |entity| Decode(entity) }.each do ...
+  #
+  # Using -1 makes split to return "" if the token is at the end of
+  # the string, meaning the last element is the start of the next chunk.
+  def extract(data)
+    if @trim > 0
+      tail_end = @tail.slice!(-@trim, @trim) # returns nil if string is too short
+      data = tail_end + data if tail_end
     end
 
-    # Extract takes an arbitrary string of input data and returns an array of
-    # tokenized entities, provided there were any available to extract.  This
-    # makes for easy processing of datagrams using a pattern like:
-    #
-    #   tokenizer.extract(data).map { |entity| Decode(entity) }.each do ...
-    def extract(data)
-      # Specifying -1 forces split to return "" if the token is at the end of
-      # the string, meaning the last element is the start of the next chunk.
-      entities = data.split(@delimiter, -1)
-      @input << entities.shift
+    @input << @tail
+    entities = data.split(@delimiter, -1)
+    @tail = entities.shift
 
-      if entities.empty?
-        entities
-      else
-        entities.unshift @input.join
-
-        # The last entity in the list is the beginning of the next untokenized data.
-        @input.clear
-        @input << entities.pop
-
-        entities
-      end
-    end
-
-    # Flush the contents of the input buffer, i.e. return the input buffer even though
-    # a token has not yet been encountered
-    def flush
-      buffer = @input.join
+    unless entities.empty?
+      @input << @tail
+      entities.unshift @input.join
       @input.clear
-      buffer
+      @tail = entities.pop
     end
+
+    entities
   end
 
-  # Speed can be improved when the single char tokenizer
-  # can operate without having to worry about tokens spanning
-  # data chunk edges.
-  class PatternTokenizer < CharTokenizer
-    def initialize(delimiter=$/)
-      super(delimiter, false)
-      @tail = ''
-      @trim = @delimiter.size - 1
-    end
-
-    def extract(data)
-      entities = (@tail + data).split(@delimiter, -1)
-      @tail = entities.shift
-      if entities.empty?
-        @input << @tail.slice!(0, @tail.size-@trim)
-        entities
-      else
-        @input << @tail
-        entities.unshift @input.join
-        @input.clear
-        @tail = entities.pop
-        entities
-      end
-    end
-
-    def flush
-      buffer = super + @tail
-      @tail = ""
-      buffer
-    end
+  # Flush the contents of the input buffer, i.e. return the input buffer even though
+  # a token has not yet been encountered
+  def flush
+    @input << @tail
+    buffer = @input.join
+    @input.clear
+    @tail = "" # @tail.clear is slightly faster, but not supported on 1.8.7
+    buffer
   end
 end
