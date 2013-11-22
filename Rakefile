@@ -28,17 +28,17 @@ task :bench do
   frequency1 = 1000
   puts "generating #{n} strings, with #{delimiter.inspect} every #{frequency1} strings..."
   data1 = (0...n).map do |i|
-    ((i % frequency1 == 1) ? "\n" : "") +
+    (((i % frequency1 == 1) ? "\n" : "") +
       ("s" * i) +
-      ((i % frequency1 == 0) ? "\n" : "")
+      ((i % frequency1 == 0) ? "\n" : "")).freeze
   end
 
   frequency2 = 10
   puts "generating #{n} strings, with #{delimiter.inspect} every #{frequency2} strings..."
   data2 = (0...n).map do |i|
-    ((i % frequency2 == 1) ? "\n" : "") +
+    (((i % frequency2 == 1) ? "\n" : "") +
       ("s" * i) +
-      ((i % frequency2 == 0) ? "\n" : "")
+      ((i % frequency2 == 0) ? "\n" : "")).freeze
   end
 
   Benchmark.bmbm do |x|
