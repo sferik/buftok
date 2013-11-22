@@ -13,5 +13,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_rubygems_version = '>= 1.3.5'
   spec.summary       = spec.description
-  spec.version       = "0.1"
+  spec.version       = "0.2.0"
 end
