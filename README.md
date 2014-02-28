@@ -1,9 +1,9 @@
 # BufferedTokenizer
 
-[![Gem Version](https://badge.fury.io/rb/buftok.png)][gem]
-[![Build Status](https://travis-ci.org/sferik/buftok.png?branch=master)][travis]
-[![Dependency Status](https://gemnasium.com/sferik/buftok.png?travis)][gemnasium]
-[![Code Climate](https://codeclimate.com/github/sferik/buftok.png)][codeclimate]
+[![Gem Version](http://img.shields.io/gem/v/buftok.svg)][gem]
+[![Build Status](http://img.shields.io/travis/sferik/buftok.svg)][travis]
+[![Dependency Status](http://img.shields.io/gemnasium/sferik/buftok.svg)][gemnasium]
+[![Code Climate](http://img.shields.io/codeclimate/github/sferik/buftok.svg)][codeclimate]
 
 [gem]: https://rubygems.org/gems/buftok
 [travis]: https://travis-ci.org/sferik/buftok
