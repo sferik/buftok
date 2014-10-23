@@ -24,4 +24,12 @@ class TestBuftok < Test::Unit::TestCase
     assert_equal %w[bar<baz qux], tokenizer.extract('baz<>qux<>'.freeze)
     assert_equal '', tokenizer.flush
   end
+
+  def test_split_and_isolated_delimiter
+    tokenizer = BufferedTokenizer.new("\r\n".freeze)
+    assert_equal [], tokenizer.extract("foo\r".freeze)
+    assert_equal %w[foo], tokenizer.extract("\n".freeze)
+    assert_equal %w[bar], tokenizer.extract("bar\r\n".freeze)
+    assert_equal '', tokenizer.flush
+  end
 end
