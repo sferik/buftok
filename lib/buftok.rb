@@ -44,7 +44,7 @@ class BufferedTokenizer
       @tail = entities.pop
     end
 
-    entities
+    entities.map { |e| e.gsub(@delimiter, '') }
   end
 
   # Flush the contents of the input buffer, i.e. return the input buffer even though
