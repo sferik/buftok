@@ -57,3 +57,6 @@ class BufferedTokenizer
     buffer
   end
 end
+
+# The expected constant for a gem named buftok
+Buftok = BufferedTokenizer
