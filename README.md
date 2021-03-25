@@ -40,4 +40,5 @@ of a major release, support for that Ruby version may be dropped.
 ## Copyright
 Copyright (c) 2006-2021 Tony Arcieri, Martin Emde, Erik Michaels-Ober.
 Distributed under the [MIT license][license].
+
 [license]: https://opensource.org/licenses/MIT
