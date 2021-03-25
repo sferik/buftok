@@ -2,13 +2,9 @@
 
 [![Gem Version](http://img.shields.io/gem/v/buftok.svg)][gem]
 [![Build Status](https://github.com/sferik/buftok/actions/workflows/ruby.yml/badge.svg)][build]
-[![Dependency Status](http://img.shields.io/gemnasium/sferik/buftok.svg)][gemnasium]
-[![Code Climate](http://img.shields.io/codeclimate/github/sferik/buftok.svg)][codeclimate]
 
 [gem]: https://rubygems.org/gems/buftok
 [build]: https://github.com/sferik/buftok/actions
-[gemnasium]: https://gemnasium.com/sferik/buftok
-[codeclimate]: https://codeclimate.com/github/sferik/buftok
 
 ###### Statefully split input data by a specifiable token
 
