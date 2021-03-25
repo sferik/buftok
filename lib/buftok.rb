@@ -19,6 +19,14 @@ class BufferedTokenizer
     @trim = @delimiter.length - 1
   end
 
+  # Determine the size of the internal buffer.
+  #
+  # Size is not cached and is determined every time this method is called
+  # in order to optimize throughput for extract.
+  def size
+    @tail.length + @input.inject(0) { |total, input| total + input.length }
+  end
+
   # Extract takes an arbitrary string of input data and returns an array of
   # tokenized entities, provided there were any available to extract.  This
   # makes for easy processing of datagrams using a pattern like:

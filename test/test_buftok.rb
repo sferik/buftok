@@ -28,4 +28,14 @@ class TestBuftok < Test::Unit::TestCase
     assert_equal %w[bar<baz qux], tokenizer.extract('baz<>qux<>'.freeze)
     assert_equal '', tokenizer.flush
   end
+
+  def test_size
+    tokenizer = BufferedTokenizer.new('<>'.freeze)
+    assert_equal [], tokenizer.extract('foo<'.freeze)
+    assert_equal 4, tokenizer.size
+    assert_equal %w[foo], tokenizer.extract('>bar<'.freeze)
+    assert_equal 4, tokenizer.size
+    assert_equal %w[bar<baz qux], tokenizer.extract('baz<>qux<>'.freeze)
+    assert_equal 0, tokenizer.size
+  end
 end
