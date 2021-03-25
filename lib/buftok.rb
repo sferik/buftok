@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+#
 # BufferedTokenizer takes a delimiter upon instantiation, or acts line-based
 # by default.  It allows input to be spoon-fed from some outside source which
 # receives arbitrary length datagrams which may-or-may-not contain the token
@@ -15,7 +17,7 @@ class BufferedTokenizer
   def initialize(delimiter = $/)
     @delimiter = delimiter
     @input = []
-    @tail = ''
+    @tail = String.new
     @trim = @delimiter.length - 1
   end
 
@@ -61,7 +63,7 @@ class BufferedTokenizer
     @input << @tail
     buffer = @input.join
     @input.clear
-    @tail = "" # @tail.clear is slightly faster, but not supported on 1.8.7
+    @tail = String.new # @tail.clear is slightly faster, but not supported on 1.8.7
     buffer
   end
 end
