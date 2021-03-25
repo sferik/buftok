@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.version       = "0.2.0"
+  spec.version       = "0.3.0"
 
   spec.authors       = ["Tony Arcieri", "Martin Emde", "Erik Michaels-Ober"]
   spec.summary       = %q{BufferedTokenizer extracts token delimited entities from a sequence of string inputs}
