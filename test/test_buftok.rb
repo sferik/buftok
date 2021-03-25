@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+#
+# Desipte the frozen_string_literal declaration, I'm leaving the explicit calls
+# to .freeze to be extra clear about treating input as immutable.
+
 require 'test/unit'
 require 'buftok'
 
@@ -15,7 +20,7 @@ class TestBuftok < Test::Unit::TestCase
   end
 
   def test_delimiter
-    tokenizer = BufferedTokenizer.new('<>')
+    tokenizer = BufferedTokenizer.new("<>".freeze)
     assert_equal ['', "foo\n"], tokenizer.extract("<>foo\n<>".freeze)
     assert_equal %w[bar], tokenizer.extract('bar<>baz'.freeze)
     assert_equal 'baz', tokenizer.flush
