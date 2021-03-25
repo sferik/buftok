@@ -1,6 +1,3 @@
-source 'https://rubygems.org'
-
-gem 'rake'
-gem 'rdoc'
+source "https://rubygems.org"
 
 gemspec
