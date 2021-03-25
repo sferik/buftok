@@ -1,12 +1,12 @@
 # BufferedTokenizer
 
 [![Gem Version](http://img.shields.io/gem/v/buftok.svg)][gem]
-[![Build Status](http://img.shields.io/travis/sferik/buftok.svg)][travis]
+[![Build Status](https://github.com/sferik/buftok/actions/workflows/ruby.yml/badge.svg)][build]
 [![Dependency Status](http://img.shields.io/gemnasium/sferik/buftok.svg)][gemnasium]
 [![Code Climate](http://img.shields.io/codeclimate/github/sferik/buftok.svg)][codeclimate]
 
 [gem]: https://rubygems.org/gems/buftok
-[travis]: https://travis-ci.org/sferik/buftok
+[build]: https://github.com/sferik/buftok/actions
 [gemnasium]: https://gemnasium.com/sferik/buftok
 [codeclimate]: https://codeclimate.com/github/sferik/buftok
 
@@ -21,20 +21,18 @@ something like [EventMachine][].
 [EventMachine]: http://rubyeventmachine.com/
 
 ## Supported Ruby Versions
-This library aims to support and is [tested against][travis] the following Ruby
+This library aims to support and is [tested against][build] the following Ruby
 implementations:
 
-* Ruby 1.8.7
-* Ruby 1.9.2
-* Ruby 1.9.3
-* Ruby 2.0.0
-* Ruby 2.1.0
+* Ruby 2.6
+* Ruby 2.7
+* Ruby 3.0
 
 If something doesn't work on one of these interpreters, it's a bug.
 
-This library may inadvertently work (or seem to work) on other Ruby
-implementations, however support will only be provided for the versions listed
-above.
+This code will likely still work on older versions since it has not undergone
+many changes since release. However, support will not be provided for
+end-of-life ruby versions.
 
 If you would like this library to support another Ruby version, you may
 volunteer to be a maintainer. Being a maintainer entails making sure all tests
