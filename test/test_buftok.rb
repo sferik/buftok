@@ -2,6 +2,10 @@ require 'test/unit'
 require 'buftok'
 
 class TestBuftok < Test::Unit::TestCase
+  def test_constant
+    assert_same BufferedTokenizer, Buftok
+  end
+
   def test_buftok
     tokenizer = BufferedTokenizer.new
     assert_equal %w[foo], tokenizer.extract("foo\nbar".freeze)
