@@ -3,10 +3,10 @@
 # Despite the frozen_string_literal declaration, I'm leaving the explicit calls
 # to .freeze to be extra clear about treating input as immutable.
 
-require "test/unit"
+require "minitest/autorun"
 require "buftok"
 
-class TestBuftok < Test::Unit::TestCase
+class TestBuftok < Minitest::Test
   def test_constant
     assert_same BufferedTokenizer, Buftok
   end
