@@ -63,7 +63,7 @@ class BufferedTokenizer
     @input << @tail
     buffer = @input.join
     @input.clear
-    @tail = String.new # @tail.clear is slightly faster, but not supported on 1.8.7
+    @tail.clear
     buffer
   end
 end
