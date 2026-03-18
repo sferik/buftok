@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # BufferedTokenizer takes a delimiter upon instantiation, or acts line-based
 # by default.  It allows input to be spoon-fed from some outside source which
@@ -17,7 +18,7 @@ class BufferedTokenizer
   def initialize(delimiter = $/)
     @delimiter = delimiter
     @input = []
-    @tail = String.new
+    @tail = +""
     @trim = @delimiter.length - 1
   end
 
@@ -38,7 +39,7 @@ class BufferedTokenizer
   # Using -1 makes split to return "" if the token is at the end of
   # the string, meaning the last element is the start of the next chunk.
   def extract(data)
-    if @trim > 0
+    if @trim.positive?
       tail_end = @tail.slice!(-@trim, @trim) # returns nil if string is too short
       data = tail_end + data if tail_end
     end

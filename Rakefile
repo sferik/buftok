@@ -1,8 +1,17 @@
+# frozen_string_literal: true
+
 require "bundler"
 require "rdoc/task"
 require "rake/testtask"
+require "rubocop/rake_task"
+require "standard/rake"
 
 task default: :test
+
+RuboCop::RakeTask.new
+
+desc "Run RuboCop and Standard"
+task lint: %i[rubocop standard]
 
 Bundler::GemHelper.install_tasks
 
@@ -22,23 +31,23 @@ task :bench do
   require "benchmark"
   require File.expand_path("lib/buftok", File.dirname(__FILE__))
 
-  n = 50000
+  n = 50_000
   delimiter = "\n\n"
 
   frequency1 = 1000
   puts "generating #{n} strings, with #{delimiter.inspect} every #{frequency1} strings..."
   data1 = (0...n).map do |i|
-    ((i % frequency1 == 1 ? "\n" : "") +
+    (((i % frequency1 == 1) ? "\n" : "") +
       ("s" * i) +
-      (i % frequency1 == 0 ? "\n" : "")).freeze
+      ((i % frequency1).zero? ? "\n" : "")).freeze
   end
 
   frequency2 = 10
   puts "generating #{n} strings, with #{delimiter.inspect} every #{frequency2} strings..."
   data2 = (0...n).map do |i|
-    ((i % frequency2 == 1 ? "\n" : "") +
+    (((i % frequency2 == 1) ? "\n" : "") +
       ("s" * i) +
-      (i % frequency2 == 0 ? "\n" : "")).freeze
+      ((i % frequency2).zero? ? "\n" : "")).freeze
   end
 
   Benchmark.bmbm do |x|

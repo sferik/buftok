@@ -1,14 +1,16 @@
-Gem::Specification.new do |spec|
-  spec.version       = "0.3.0"
+# frozen_string_literal: true
 
-  spec.authors       = ["Tony Arcieri", "Martin Emde", "Erik Berlin"]
-  spec.summary       = %q{BufferedTokenizer extracts token delimited entities from a sequence of string inputs}
-  spec.description   = spec.summary
-  spec.email         = ["sferik@gmail.com", "martin.emde@gmail.com"]
-  spec.files         = %w(CONTRIBUTING.md LICENSE.txt README.md buftok.gemspec) + Dir["lib/**/*.rb"]
-  spec.homepage      = "https://github.com/sferik/buftok"
-  spec.licenses      = ["MIT"]
-  spec.name          = "buftok"
+Gem::Specification.new do |spec|
+  spec.version = "0.3.0"
+
+  spec.authors = ["Tony Arcieri", "Martin Emde", "Erik Berlin"]
+  spec.summary = "BufferedTokenizer extracts token delimited entities from a sequence of string inputs"
+  spec.description = spec.summary
+  spec.email = ["sferik@gmail.com", "martin.emde@gmail.com"]
+  spec.files = %w[CONTRIBUTING.md LICENSE.txt README.md buftok.gemspec] + Dir["lib/**/*.rb"]
+  spec.homepage = "https://github.com/sferik/buftok"
+  spec.licenses = ["MIT"]
+  spec.name = "buftok"
   spec.require_paths = ["lib"]
   spec.required_ruby_version = ">= 3.2"
   spec.required_rubygems_version = ">= 3.0"
@@ -21,6 +23,6 @@ Gem::Specification.new do |spec|
     "funding_uri" => "https://github.com/sponsors/sferik/",
     "homepage_uri" => spec.homepage,
     "rubygems_mfa_required" => "true",
-    "source_code_uri" => spec.homepage,
+    "source_code_uri" => spec.homepage
   }
 end

@@ -1,0 +1,29 @@
+plugins:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rake
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.2
+
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/buftok.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex

@@ -1,7 +1,15 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 gemspec
 
+gem "minitest", "~> 6"
 gem "rake", ">= 13"
 gem "rdoc"
-gem "minitest", "~> 6"
+gem "rubocop"
+gem "rubocop-minitest"
+gem "rubocop-performance"
+gem "rubocop-rake"
+gem "standard"
+gem "standard-performance"
