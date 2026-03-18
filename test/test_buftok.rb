@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 #
-# Desipte the frozen_string_literal declaration, I'm leaving the explicit calls
+# Despite the frozen_string_literal declaration, I'm leaving the explicit calls
 # to .freeze to be extra clear about treating input as immutable.
 
 require "test/unit"
