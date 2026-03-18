@@ -26,7 +26,7 @@ class BufferedTokenizer
   # Size is not cached and is determined every time this method is called
   # in order to optimize throughput for extract.
   def size
-    @tail.length + @input.inject(0) { |total, input| total + input.length }
+    @tail.length + @input.sum(&:length)
   end
 
   # Extract takes an arbitrary string of input data and returns an array of
