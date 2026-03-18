@@ -1,0 +1,13 @@
+class BufferedTokenizer
+  @delimiter: String
+  @input: Array[String]
+  @tail: String
+  @trim: Integer
+
+  def initialize: (?String delimiter) -> void
+  def size: () -> Integer
+  def extract: (String data) -> Array[String]
+  def flush: () -> String
+end
+
+Buftok: singleton(BufferedTokenizer)

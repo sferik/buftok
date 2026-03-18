@@ -15,7 +15,7 @@ class BufferedTokenizer
   # appropriate data structure).  Segments of input data are stored in a list
   # which is only joined when a token is reached, substantially reducing the
   # number of objects required for the operation.
-  def initialize(delimiter = $/)
+  def initialize(delimiter = $/ || "\n")
     @delimiter = delimiter
     @input = []
     @tail = +""
@@ -52,7 +52,7 @@ class BufferedTokenizer
       @input << @tail
       entities.unshift @input.join
       @input.clear
-      @tail = entities.pop
+      @tail = entities.pop.to_s
     end
 
     entities

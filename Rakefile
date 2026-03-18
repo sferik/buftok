@@ -13,6 +13,11 @@ RuboCop::RakeTask.new
 desc "Run RuboCop and Standard"
 task lint: %i[rubocop standard]
 
+desc "Type check with Steep"
+task :steep do
+  sh "steep check"
+end
+
 Bundler::GemHelper.install_tasks
 
 RDoc::Task.new do |task|
