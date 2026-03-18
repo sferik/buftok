@@ -1,13 +1,20 @@
 class BufferedTokenizer
+  SPLIT_LIMIT: Integer
   @delimiter: String
   @input: Array[String]
   @tail: String
-  @trim: Integer
+  @overlap: Integer
+
+  attr_reader overlap: Integer
 
   def initialize: (?String delimiter) -> void
   def size: () -> Integer
   def extract: (String data) -> Array[String]
   def flush: () -> String
+
+  private
+
+  def rejoin_split_delimiter: (String data) -> String
 end
 
 Buftok: singleton(BufferedTokenizer)

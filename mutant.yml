@@ -1,0 +1,13 @@
+---
+usage: opensource
+integration:
+  name: minitest
+includes:
+  - lib
+requires:
+  - buftok
+mutation:
+  operators: full
+matcher:
+  subjects:
+    - "BufferedTokenizer*"

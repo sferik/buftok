@@ -18,6 +18,11 @@ task :steep do
   sh "steep check"
 end
 
+desc "Run mutation testing"
+task :mutant do
+  sh "mutant run"
+end
+
 Bundler::GemHelper.install_tasks
 
 RDoc::Task.new do |task|

@@ -5,6 +5,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "minitest", "~> 6"
+gem "mutant"
+gem "mutant-minitest"
 gem "rake", ">= 13"
 gem "rdoc"
 gem "rubocop"

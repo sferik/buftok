@@ -7,6 +7,8 @@
 # by which entities are delimited.  In this respect it's ideally paired with
 # something like EventMachine (http://rubyeventmachine.com/).
 class BufferedTokenizer
+  SPLIT_LIMIT = -1
+
   # New BufferedTokenizers will operate on lines delimited by a delimiter,
   # which is by default the global input delimiter $/ ("\n").
   #
@@ -15,11 +17,13 @@ class BufferedTokenizer
   # appropriate data structure).  Segments of input data are stored in a list
   # which is only joined when a token is reached, substantially reducing the
   # number of objects required for the operation.
+  attr_reader :overlap
+
   def initialize(delimiter = $/ || "\n")
     @delimiter = delimiter
     @input = []
     @tail = +""
-    @trim = @delimiter.length - 1
+    @overlap = @delimiter.length - 1
   end
 
   # Determine the size of the internal buffer.
@@ -39,20 +43,17 @@ class BufferedTokenizer
   # Using -1 makes split to return "" if the token is at the end of
   # the string, meaning the last element is the start of the next chunk.
   def extract(data)
-    if @trim.positive?
-      tail_end = @tail.slice!(-@trim, @trim) # returns nil if string is too short
-      data = tail_end + data if tail_end
-    end
+    data = rejoin_split_delimiter(data)
 
     @input << @tail
-    entities = data.split(@delimiter, -1)
-    @tail = entities.shift
+    entities = data.split(@delimiter, SPLIT_LIMIT)
+    @tail = entities.shift # : String
 
-    unless entities.empty?
+    if entities.length.positive?
       @input << @tail
       entities.unshift @input.join
       @input.clear
-      @tail = entities.pop.to_s
+      @tail = entities.pop # : String
     end
 
     entities
@@ -64,8 +65,20 @@ class BufferedTokenizer
     @input << @tail
     buffer = @input.join
     @input.clear
-    @tail.clear
+    @tail = +""
     buffer
+  end
+
+  private
+
+  def rejoin_split_delimiter(data)
+    if @overlap.positive?
+      tail_end = @tail[-@overlap..]
+      @tail.slice!(-@overlap, @overlap)
+      tail_end ? tail_end + data : data
+    else
+      data
+    end
   end
 end
 
