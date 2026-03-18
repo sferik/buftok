@@ -20,9 +20,10 @@ something like [EventMachine][].
 This library aims to support and is [tested against][build] the following Ruby
 implementations:
 
-* Ruby 2.6
-* Ruby 2.7
-* Ruby 3.0
+* Ruby 3.2
+* Ruby 3.3
+* Ruby 3.4
+* Ruby 4.0
 
 If something doesn't work on one of these interpreters, it's a bug.
 
