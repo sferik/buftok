@@ -10,10 +10,12 @@ Gem::Specification.new do |spec|
   spec.licenses      = ["MIT"]
   spec.name          = "buftok"
   spec.require_paths = ["lib"]
-  spec.required_rubygems_version = ">= 1.3.5"
+  spec.required_ruby_version = ">= 3.2"
+  spec.required_rubygems_version = ">= 3.0"
 
-  spec.add_development_dependency "bundler", ">= 1.17"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rdoc"
-  spec.add_development_dependency "test-unit"
+  spec.metadata = {
+    "source_code_uri" => "https://github.com/sferik/buftok",
+    "bug_tracker_uri" => "https://github.com/sferik/buftok/issues",
+    "changelog_uri" => "https://github.com/sferik/buftok/blob/master/CHANGELOG.md",
+  }
 end
