@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "English"
 require "minitest/autorun"
 require "mutant/minitest/coverage"
 require "buftok"

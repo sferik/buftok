@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "English"
-
 # BufferedTokenizer takes a delimiter upon instantiation, or acts line-based
 # by default.  It allows input to be spoon-fed from some outside source which
 # receives arbitrary length datagrams which may-or-may-not contain the token
@@ -11,7 +9,7 @@ class BufferedTokenizer
   SPLIT_LIMIT = -1
 
   # New BufferedTokenizers will operate on lines delimited by a delimiter,
-  # which is by default the global input delimiter $/ ("\n").
+  # which is by default "\n".
   #
   # The input buffer is stored as an array.  This is by far the most efficient
   # approach given language constraints (in C a linked list would be a more
@@ -20,7 +18,7 @@ class BufferedTokenizer
   # number of objects required for the operation.
   attr_reader :overlap
 
-  def initialize(delimiter = $INPUT_RECORD_SEPARATOR || "\n")
+  def initialize(delimiter = "\n")
     @delimiter = delimiter
     @input = []
     @tail = +""

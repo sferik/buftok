@@ -1,5 +1,3 @@
-$INPUT_RECORD_SEPARATOR: String?
-
 class BufferedTokenizer
   SPLIT_LIMIT: Integer
   @delimiter: String
