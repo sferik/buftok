@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-#
+require "English"
+
 # BufferedTokenizer takes a delimiter upon instantiation, or acts line-based
 # by default.  It allows input to be spoon-fed from some outside source which
 # receives arbitrary length datagrams which may-or-may-not contain the token
@@ -19,7 +20,7 @@ class BufferedTokenizer
   # number of objects required for the operation.
   attr_reader :overlap
 
-  def initialize(delimiter = $/ || "\n")
+  def initialize(delimiter = $INPUT_RECORD_SEPARATOR || "\n")
     @delimiter = delimiter
     @input = []
     @tail = +""
@@ -49,12 +50,7 @@ class BufferedTokenizer
     entities = data.split(@delimiter, SPLIT_LIMIT)
     @tail = entities.shift # : String
 
-    if entities.length.positive?
-      @input << @tail
-      entities.unshift @input.join
-      @input.clear
-      @tail = entities.pop # : String
-    end
+    consolidate_input(entities) if entities.length.positive?
 
     entities
   end
@@ -70,6 +66,13 @@ class BufferedTokenizer
   end
 
   private
+
+  def consolidate_input(entities)
+    @input << @tail
+    entities.unshift @input.join
+    @input.clear
+    @tail = entities.pop # : String
+  end
 
   def rejoin_split_delimiter(data)
     if @overlap.positive?

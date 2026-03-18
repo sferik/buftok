@@ -8,30 +8,9 @@ AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 3.2
 
-Metrics/AbcSize:
-  Exclude:
-    - lib/buftok.rb
-
 Metrics/BlockLength:
   Exclude:
     - Rakefile
-
-Metrics/ClassLength:
-  Exclude:
-    - test/**/*.rb
-
-Metrics/MethodLength:
-  Exclude:
-    - lib/buftok.rb
-
-Minitest/MultipleAssertions:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/SpecialGlobalVars:
-  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
