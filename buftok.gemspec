@@ -14,8 +14,13 @@ Gem::Specification.new do |spec|
   spec.required_rubygems_version = ">= 3.0"
 
   spec.metadata = {
-    "source_code_uri" => "https://github.com/sferik/buftok",
-    "bug_tracker_uri" => "https://github.com/sferik/buftok/issues",
-    "changelog_uri" => "https://github.com/sferik/buftok/blob/master/CHANGELOG.md",
+    "allowed_push_host" => "https://rubygems.org",
+    "bug_tracker_uri" => "#{spec.homepage}/issues",
+    "changelog_uri" => "#{spec.homepage}/blob/master/CHANGELOG.md",
+    "documentation_uri" => "https://rubydoc.info/gems/buftok/",
+    "funding_uri" => "https://github.com/sponsors/sferik/",
+    "homepage_uri" => spec.homepage,
+    "rubygems_mfa_required" => "true",
+    "source_code_uri" => spec.homepage,
   }
 end
