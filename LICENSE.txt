@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2021 Tony Arcieri, Martin Emde, Erik Michaels-Ober
+Copyright (c) 2006-2026 Tony Arcieri, Martin Emde, Erik Berlin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

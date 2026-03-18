@@ -39,7 +39,7 @@ fashion. If critical issues for a particular implementation exist at the time
 of a major release, support for that Ruby version may be dropped.
 
 ## Copyright
-Copyright (c) 2006-2021 Tony Arcieri, Martin Emde, Erik Michaels-Ober.
+Copyright (c) 2006-2026 Tony Arcieri, Martin Emde, Erik Berlin.
 Distributed under the [MIT license][license].
 
 [license]: https://opensource.org/licenses/MIT
