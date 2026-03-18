@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.summary = "BufferedTokenizer extracts token delimited entities from a sequence of string inputs"
   spec.description = spec.summary
   spec.email = ["sferik@gmail.com", "martin.emde@gmail.com"]
-  spec.files = %w[CONTRIBUTING.md LICENSE.txt README.md buftok.gemspec] + Dir["lib/**/*.rb"]
+  spec.files = %w[CHANGELOG.md CONTRIBUTING.md LICENSE.txt README.md buftok.gemspec] + Dir["lib/**/*.rb"]
   spec.homepage = "https://github.com/sferik/buftok"
   spec.licenses = ["MIT"]
   spec.name = "buftok"
