@@ -5,8 +5,7 @@
 # BufferedTokenizer takes a delimiter upon instantiation, or acts line-based
 # by default. It allows input to be spoon-fed from some outside source which
 # receives arbitrary length datagrams which may-or-may-not contain the token
-# by which entities are delimited. In this respect it's ideally paired with
-# something like EventMachine (http://rubyeventmachine.com/).
+# by which entities are delimited.
 #
 # @example
 #   tokenizer = BufferedTokenizer.new("\n")
@@ -22,12 +21,6 @@ class BufferedTokenizer
   # The number of characters at the end of a chunk that may contain a
   # partial delimiter, equal to delimiter.length - 1.
   #
-  # The input buffer is stored as an array. This is by far the most efficient
-  # approach given language constraints (in C a linked list would be a more
-  # appropriate data structure). Segments of input data are stored in a list
-  # which is only joined when a token is reached, substantially reducing the
-  # number of objects required for the operation.
-  #
   # @example
   #   BufferedTokenizer.new("<>").overlap  #=> 1
   #
@@ -39,6 +32,12 @@ class BufferedTokenizer
   # Create a new BufferedTokenizer
   #
   # Operates on lines delimited by a delimiter, which is by default "\n".
+  #
+  # The input buffer is stored as an array. This is by far the most efficient
+  # approach given language constraints (in C a linked list would be a more
+  # appropriate data structure). Segments of input data are stored in a list
+  # which is only joined when a token is reached, substantially reducing the
+  # number of objects required for the operation.
   #
   # @example
   #   tokenizer = BufferedTokenizer.new("<>")

@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-require "mutant/minitest/coverage"
-require "buftok"
+require_relative "test_helper"
 
-# Tests for BufferedTokenizer#size and internal buffer state
 class BufferedTokenizer
   class SizeTest < Minitest::Test
     cover BufferedTokenizer

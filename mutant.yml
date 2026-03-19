@@ -1,5 +1,7 @@
 ---
 usage: opensource
+environment_variables:
+  MUTANT: "true"
 integration:
   name: minitest
 includes:

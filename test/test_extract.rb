@@ -1,24 +1,17 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-require "mutant/minitest/coverage"
-require "buftok"
+require_relative "test_helper"
 
-# Tests for BufferedTokenizer#extract
 class BufferedTokenizer
   class ExtractTest < Minitest::Test
     cover BufferedTokenizer
 
     def test_returns_complete_tokens
-      tokenizer = BufferedTokenizer.new
-
-      assert_equal %w[foo], tokenizer.extract("foo\nbar")
+      assert_equal %w[foo], BufferedTokenizer.new.extract("foo\nbar")
     end
 
     def test_returns_multiple_tokens
-      tokenizer = BufferedTokenizer.new
-
-      assert_equal %w[foo bar], tokenizer.extract("foo\nbar\nbaz")
+      assert_equal %w[foo bar], BufferedTokenizer.new.extract("foo\nbar\nbaz")
     end
 
     def test_buffers_partial_input
@@ -49,9 +42,7 @@ class BufferedTokenizer
     end
 
     def test_two_char_delimiter
-      tokenizer = BufferedTokenizer.new("<>")
-
-      assert_equal ["", "foo\n"], tokenizer.extract("<>foo\n<>")
+      assert_equal ["", "foo\n"], BufferedTokenizer.new("<>").extract("<>foo\n<>")
     end
 
     def test_two_char_delimiter_multiple_tokens

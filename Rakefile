@@ -42,7 +42,7 @@ end
 desc "Benchmark the current implementation"
 task :bench do
   require "benchmark"
-  require File.expand_path("lib/buftok", File.dirname(__FILE__))
+  require File.expand_path("lib/buftok", __dir__)
 
   n = 50_000
   delimiter = "\n\n"
