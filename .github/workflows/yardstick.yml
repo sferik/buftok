@@ -1,0 +1,21 @@
+name: Documentation Coverage
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  yardstick:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ruby
+        bundler-cache: true
+    - name: Verify YARD documentation coverage
+      run: bundle exec rake verify_measurements

@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 require "bundler"
-require "rdoc/task"
 require "rake/testtask"
 require "rubocop/rake_task"
 require "standard/rake"
+require "yard"
+require "yardstick/rake/measurement"
+require "yardstick/rake/verify"
 
-task default: :test
+task default: %i[test lint steep yard verify_measurements mutant]
+
+Yardstick::Rake::Measurement.new
+Yardstick::Rake::Verify.new do |verify|
+  verify.threshold = 100
+end
 
 RuboCop::RakeTask.new
 
@@ -25,11 +32,7 @@ end
 
 Bundler::GemHelper.install_tasks
 
-RDoc::Task.new do |task|
-  task.rdoc_dir = "doc"
-  task.title = "BufferedTokenizer"
-  task.rdoc_files.include("lib/**/*.rb")
-end
+YARD::Rake::YardocTask.new
 
 Rake::TestTask.new :test do |t|
   t.libs << "lib"
