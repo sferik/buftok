@@ -1,10 +1,18 @@
 # BufferedTokenizer
 
 [![Gem Version](http://img.shields.io/gem/v/buftok.svg)][gem]
-[![Build Status](https://github.com/sferik/buftok/actions/workflows/ruby.yml/badge.svg)][build]
+[![Test](https://github.com/sferik/buftok/actions/workflows/test.yml/badge.svg)][test]
+[![Lint](https://github.com/sferik/buftok/actions/workflows/lint.yml/badge.svg)][lint]
+[![Type Check](https://github.com/sferik/buftok/actions/workflows/typecheck.yml/badge.svg)][typecheck]
+[![Mutation Testing](https://github.com/sferik/buftok/actions/workflows/mutant.yml/badge.svg)][mutant]
+[![Documentation Coverage](https://github.com/sferik/buftok/actions/workflows/yardstick.yml/badge.svg)][yardstick]
 
 [gem]: https://rubygems.org/gems/buftok
-[build]: https://github.com/sferik/buftok/actions
+[test]: https://github.com/sferik/buftok/actions/workflows/test.yml
+[lint]: https://github.com/sferik/buftok/actions/workflows/lint.yml
+[typecheck]: https://github.com/sferik/buftok/actions/workflows/typecheck.yml
+[mutant]: https://github.com/sferik/buftok/actions/workflows/mutant.yml
+[yardstick]: https://github.com/sferik/buftok/actions/workflows/yardstick.yml
 
 ###### Statefully split input data by a specifiable token
 
@@ -17,7 +25,7 @@ something like [EventMachine][].
 [EventMachine]: http://rubyeventmachine.com/
 
 ## Supported Ruby Versions
-This library aims to support and is [tested against][build] the following Ruby
+This library aims to support and is [tested against][test] the following Ruby
 implementations:
 
 * Ruby 3.2
