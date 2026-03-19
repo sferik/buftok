@@ -17,12 +17,86 @@
 ###### Statefully split input data by a specifiable token
 
 BufferedTokenizer takes a delimiter upon instantiation, or acts line-based by
-default.  It allows input to be spoon-fed from some outside source which
+default. It allows input to be spoon-fed from some outside source which
 receives arbitrary length datagrams which may-or-may-not contain the token by
-which entities are delimited.  In this respect it's ideally paired with
-something like [EventMachine][].
+which entities are delimited. It's useful any time you need to extract
+delimited messages from a stream of chunked data.
 
-[EventMachine]: http://rubyeventmachine.com/
+## Examples
+
+### TCP Server
+
+Process newline-delimited commands from a TCP client:
+
+```ruby
+require "socket"
+require "buftok"
+
+server = TCPServer.new(4000)
+
+loop do
+  client = server.accept
+  tokenizer = BufferedTokenizer.new("\n")
+
+  while (data = client.readpartial(4096))
+    tokenizer.extract(data).each do |line|
+      puts "Received: #{line}"
+    end
+  end
+rescue EOFError
+  client.close
+end
+```
+
+### Streaming IO
+
+Read a large file in chunks without loading it all into memory:
+
+```ruby
+require "buftok"
+
+tokenizer = BufferedTokenizer.new("\n")
+
+File.open("large_log_file.txt") do |file|
+  while (chunk = file.read(8192))
+    tokenizer.extract(chunk).each do |line|
+      process_log_line(line)
+    end
+  end
+end
+
+# Don't forget to flush any remaining data
+remaining = tokenizer.flush
+process_log_line(remaining) unless remaining.empty?
+```
+
+> [!IMPORTANT]
+> Always call `flush` when you're done reading from the stream to process any
+> remaining data that didn't end with a delimiter.
+
+### Custom Delimiters
+
+Parse a stream using a multi-character delimiter:
+
+```ruby
+require "buftok"
+
+tokenizer = BufferedTokenizer.new("\r\n\r\n")
+
+chunks = ["HTTP/1.1 200 OK\r\n", "Content-Type: text/plain\r\n\r\n", "Hello"]
+
+chunks.each do |chunk|
+  tokenizer.extract(chunk).each do |headers|
+    puts "Headers: #{headers}"
+  end
+end
+
+puts "Body so far: #{tokenizer.flush}"
+```
+
+> [!TIP]
+> Multi-character delimiters that get split across chunks are handled
+> automatically — no special handling is needed on your end.
 
 ## Supported Ruby Versions
 This library aims to support and is [tested against][test] the following Ruby
@@ -35,9 +109,8 @@ implementations:
 
 If something doesn't work on one of these interpreters, it's a bug.
 
-This code will likely still work on older versions since it has not undergone
-many changes since release. However, support will not be provided for
-end-of-life ruby versions.
+This code will likely still work on older Ruby versions but support will not be
+provided for end-of-life versions.
 
 If you would like this library to support another Ruby version, you may
 volunteer to be a maintainer. Being a maintainer entails making sure all tests
