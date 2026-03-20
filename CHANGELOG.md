@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-03-20
+
+### Changed
+
+- Improve gem push workflow security and reliability
+  - Add top-level `permissions: contents: read` and scope `contents: write` to the job
+  - Restrict workflow to `sferik/buftok` repository
+  - Add `rubygems.org` deployment environment
+  - Pin `rubygems/configure-rubygems-credentials` to v1.0.0
+  - Sign gem with Sigstore before pushing
+  - Push gem with `--attestation` flag
+  - Simplify release steps and remove manual git config
+
 ## [1.0.0] - 2026-03-20
 
 ### Added
@@ -79,7 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `extract` method for incremental tokenization
 - `flush` method to retrieve remaining buffer contents
 
-[Unreleased]: https://github.com/sferik/buftok/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/sferik/buftok/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/sferik/buftok/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/sferik/buftok/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/sferik/buftok/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/sferik/buftok/compare/v0.1...v0.2.0
