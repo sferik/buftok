@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-03-20
+
 ### Added
 
 - RBS type signatures in `sig/buftok.rbs` with Steep for strict type checking
@@ -77,7 +79,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `extract` method for incremental tokenization
 - `flush` method to retrieve remaining buffer contents
 
-[Unreleased]: https://github.com/sferik/buftok/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/sferik/buftok/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/sferik/buftok/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/sferik/buftok/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/sferik/buftok/compare/v0.1...v0.2.0
 [0.1.0]: https://github.com/sferik/buftok/releases/tag/v0.1

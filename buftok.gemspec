@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.version = "0.3.0"
+  spec.version = "1.0.0"
 
   spec.authors = ["Tony Arcieri", "Martin Emde", "Erik Berlin"]
   spec.summary = "BufferedTokenizer extracts token delimited entities from a sequence of string inputs"
