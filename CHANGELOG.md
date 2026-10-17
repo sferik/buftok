@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
@@ -36,8 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Require Ruby >= 3.2
-- Require RubyGems >= 3.0
+- **Breaking:** Require Ruby >= 3.2
+- **Breaking:** Require RubyGems >= 3.0
 - Test against Ruby 3.2, 3.3, 3.4, and 4.0 (drop EOL 2.6, 2.7, 3.0)
 - Update `actions/checkout` to v6 and `ruby/setup-ruby` to v1
 - Replace test-unit with Minitest 6
@@ -83,7 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use global input delimiter `$/` as default instead of hard-coded `"\n"`
 - Unified handling of single/multi-character delimiters
 
-## [0.1.0] - 2013-11-20
+## [0.1] - 2009-07-25
 
 ### Added
 
@@ -97,4 +97,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.0]: https://github.com/sferik/buftok/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/sferik/buftok/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/sferik/buftok/compare/v0.1...v0.2.0
-[0.1.0]: https://github.com/sferik/buftok/releases/tag/v0.1
+[0.1]: https://github.com/sferik/buftok/releases/tag/v0.1
