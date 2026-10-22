@@ -15,6 +15,6 @@ gem "rubocop-rake"
 gem "simplecov"
 gem "standard"
 gem "standard-performance"
-gem "steep"
+gem "steep", ">= 2.1" if RUBY_VERSION >= "3.3" # Steep 2.1 requires Ruby 3.3+
 gem "yard"
 gem "yardstick"

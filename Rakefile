@@ -8,7 +8,10 @@ require "yard"
 require "yardstick/rake/measurement"
 require "yardstick/rake/verify"
 
-task default: %i[test lint steep yard verify_measurements mutant]
+default_tasks = %i[test lint steep yard verify_measurements mutant]
+# Steep 2.1 requires Ruby 3.3+, so it isn't installed on older Rubies
+default_tasks.delete(:steep) if RUBY_VERSION < "3.3"
+task default: default_tasks
 
 Yardstick::Rake::Measurement.new
 Yardstick::Rake::Verify.new do |verify|
