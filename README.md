@@ -6,6 +6,7 @@
 [![Type Check](https://github.com/sferik/buftok/actions/workflows/typecheck.yml/badge.svg)][typecheck]
 [![Mutation Testing](https://github.com/sferik/buftok/actions/workflows/mutant.yml/badge.svg)][mutant]
 [![Documentation Coverage](https://github.com/sferik/buftok/actions/workflows/yardstick.yml/badge.svg)][yardstick]
+[![Duel](https://raw.githubusercontent.com/sferik/duel-ruby/main/assets/badge.svg)](https://github.com/sferik/duel-ruby)
 
 [gem]: https://rubygems.org/gems/buftok
 [test]: https://github.com/sferik/buftok/actions/workflows/test.yml
