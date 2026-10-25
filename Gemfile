@@ -18,3 +18,9 @@ gem "standard-performance"
 gem "steep", ">= 2.1" if RUBY_VERSION >= "3.3" # Steep 2.1 requires Ruby 3.3+
 gem "yard"
 gem "yardstick"
+
+group :development do
+  # Duel requires Ruby 3.4 or later
+  gem "duel" if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4")
+  gem "stackprof", platforms: :mri
+end
